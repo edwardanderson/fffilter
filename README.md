@@ -8,6 +8,10 @@ Filters media files by testing criteria against header metadata extracted by [ff
 ## Install
 
 ~~~bash
+# Install this repo
+pip install git+https://github.com/edwardanderson/fffilter.git
+
+# Alternatively, install from PyPi (package may be out of date)
 pip install fffilter
 ~~~
 
@@ -73,15 +77,20 @@ path = 'media/some_file.mp4'
 # The show() method requires a path and a list of keys
 d = fffilter.show(path, ['codec_type', 'display_aspect_ratio'])
 
+# The get() method requires a string
+l = fffilter.get(path, 'codec_type')
+
 # The match() method requires a path and either key=value pairs or a packed dictionary: **{'key':'value'}
 m = fffilter.match(path, codec_type='video', display_aspect_ratio='16:9')
 
 print(d)
+print(l)
 print(m)
 ~~~
 
 ~~~
 {'display_aspect_ratio': [u'16:9'], 'codec_type': [u'audio', u'video']}
+[u'audio', u'video']
 True
 ~~~
 
