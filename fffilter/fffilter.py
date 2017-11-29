@@ -99,6 +99,19 @@ def show(path, keys):
     return matches
 
 
+def get(path, key):
+    '''
+    Fetch the values for given key
+    '''
+
+    try:
+        d = show(path, [key])
+        values = d[key]
+        return values
+    except:
+        return False
+
+
 def match(path, **criteria):
     '''
     Extract header json and return True if all key-value pairs in [criteria] match
