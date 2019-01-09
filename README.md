@@ -65,6 +65,10 @@ fffilter /path/to/file --match display_aspect_ratio 4:3
 find . -name '*.mp4' | fffilter --match codec_name h264 --match height 1080 --match width 1920 -
 ```
 
+```bash
+# Move all 16x9 files in the current directory to destination (dst/)
+find . -type f | fffilter - --match display_aspect_ratio 16:9 | while read line; do mv "$line" dst/; done
+```
 
 
 ### Module
